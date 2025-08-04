@@ -1,41 +1,44 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import Navbar from '@/components/layout/Navbar.astro';
-import Hero from '@/components/sections/Hero.astro';
-import Footer from '@/components/layout/Footer.astro';
+import Layout from '@/layouts/Layout.astro'
+import Navbar from '@/components/layout/Navbar.tsx'
+import Hero from '@/components/sections/Hero.astro'
+import Footer from '@/components/layout/Footer.astro'
 
-const projectName = 'natnails';
+const projectName = 'natnails'
 ---
 
-<Layout title={projectName} description="Proyecto creado con Astro y Tailwind CSS">
-  <Navbar transparent />
-  
-  <Hero 
+<Layout
+  title={projectName}
+  description="Proyecto creado con Astro y Tailwind CSS"
+>
+  <Navbar transparent={true} client:load />
+
+  <Hero
     title={projectName}
     subtitle="Proyecto creado con Astro + React + Tailwind CSS"
     ctaText="Ver Componentes"
     ctaLink="#componentes"
   />
-  
-  <main id="componentes" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+  <main id="componentes" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
     <div class="text-center">
-      <h2 class="text-3xl font-bold mb-8">Componentes Disponibles</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="p-6 border rounded-lg">
-          <h3 class="text-xl font-semibold mb-4">Layout</h3>
+      <h2 class="mb-8 text-3xl font-bold">Componentes Disponibles</h2>
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div class="rounded-lg border p-6">
+          <h3 class="mb-4 text-xl font-semibold">Layout</h3>
           <p class="text-gray-600">Navbar y Footer listos para usar</p>
         </div>
-        <div class="p-6 border rounded-lg">
-          <h3 class="text-xl font-semibold mb-4">Secciones</h3>
+        <div class="rounded-lg border p-6">
+          <h3 class="mb-4 text-xl font-semibold">Secciones</h3>
           <p class="text-gray-600">Hero y componentes de secciones</p>
         </div>
-        <div class="p-6 border rounded-lg">
-          <h3 class="text-xl font-semibold mb-4">UI</h3>
+        <div class="rounded-lg border p-6">
+          <h3 class="mb-4 text-xl font-semibold">UI</h3>
           <p class="text-gray-600">Botones y elementos reutilizables</p>
         </div>
       </div>
     </div>
   </main>
-  
+
   <Footer />
 </Layout>

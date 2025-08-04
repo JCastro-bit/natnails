@@ -3,7 +3,7 @@ const path = require('path')
 
 const components = {
   // Layout Components
-  'src/components/layout/Navbar.astro': `---
+  'src/components/layout/Navbar.tsx': `---
 export interface Props {
   transparent?: boolean;
 }
@@ -284,19 +284,19 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
   html {
     font-family: 'Inter', system-ui, sans-serif;
   }
-</style>`
+</style>`,
 }
 
 async function createComponents() {
   console.log('🎨 Creando componentes base...')
-  
+
   for (const [filePath, content] of Object.entries(components)) {
     const dir = path.dirname(filePath)
     await fs.mkdir(dir, { recursive: true })
     await fs.writeFile(filePath, content)
     console.log(`✅ Creado: ${filePath}`)
   }
-  
+
   console.log('🎉 Componentes base creados exitosamente!')
 }
 
