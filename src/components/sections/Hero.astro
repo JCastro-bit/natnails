@@ -1,0 +1,49 @@
+---
+export interface Props {
+  title: string;
+  subtitle?: string;
+  ctaText?: string;
+  ctaLink?: string;
+  image?: string;
+}
+
+const { 
+  title, 
+  subtitle, 
+  ctaText = "Comenzar", 
+  ctaLink = "/contacto",
+  image 
+} = Astro.props;
+---
+
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  {image && (
+    <div class="absolute inset-0 z-0">
+      <img 
+        src={image} 
+        alt="Hero background" 
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-black/50"></div>
+    </div>
+  )}
+  
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h1 class="text-4xl md:text-6xl font-bold mb-6 text-gray-900">
+      {title}
+    </h1>
+    
+    {subtitle && (
+      <p class="text-xl md:text-2xl mb-8 text-gray-700 max-w-3xl mx-auto">
+        {subtitle}
+      </p>
+    )}
+    
+    <a 
+      href={ctaLink}
+      class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors"
+    >
+      {ctaText}
+    </a>
+  </div>
+</section>

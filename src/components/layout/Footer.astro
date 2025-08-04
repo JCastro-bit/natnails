@@ -1,0 +1,38 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-gray-900 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div class="col-span-1 md:col-span-2">
+        <h3 class="text-xl font-bold mb-4">Tu Empresa</h3>
+        <p class="text-gray-300 mb-4">
+          Descripción breve de tu empresa y servicios.
+        </p>
+      </div>
+      
+      <div>
+        <h4 class="font-semibold mb-4">Enlaces</h4>
+        <ul class="space-y-2">
+          <li><a href="/" class="text-gray-300 hover:text-white">Inicio</a></li>
+          <li><a href="/servicios" class="text-gray-300 hover:text-white">Servicios</a></li>
+          <li><a href="/contacto" class="text-gray-300 hover:text-white">Contacto</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="font-semibold mb-4">Contacto</h4>
+        <ul class="space-y-2 text-gray-300">
+          <li>📧 email@empresa.com</li>
+          <li>📱 +52 33 1234 5678</li>
+          <li>📍 Guadalajara, Jalisco</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-300">
+      <p>&copy; {currentYear} Tu Empresa. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
