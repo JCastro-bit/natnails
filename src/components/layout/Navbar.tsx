@@ -66,7 +66,7 @@ export default function Navbar({ transparent = false }: NavbarProps) {
             Inicio
           </a>
           <a
-            href="https://natnails.cloud"
+            href="https://natnails.com.mx"
             className="rounded-xl px-4 py-2.5 text-sm font-semibold text-gray-800 transition-all duration-200 hover:scale-105 hover:bg-pink-50 hover:text-pink-600"
           >
             Cursos
@@ -159,7 +159,7 @@ export default function Navbar({ transparent = false }: NavbarProps) {
                     Inicio
                   </a>
                   <a
-                    href="https://natnails.cloud"
+                    href="https://natnails.com.mx"
                     onClick={() => setIsMenuOpen(false)}
                     className="block rounded-xl px-4 py-3 text-base font-semibold text-gray-800 transition-all duration-200 hover:bg-pink-50 hover:text-pink-600"
                   >
