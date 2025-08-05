@@ -17,15 +17,6 @@ export default function Navbar({ transparent = false }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const navClasses = [
-    'fixed top-0 w-full z-50 transition-all duration-300',
-    transparent && !isScrolled
-      ? 'bg-transparent'
-      : 'bg-white/95 backdrop-blur-sm shadow-sm',
-  ]
-    .filter(Boolean)
-    .join(' ')
-
   const handleSmoothScroll = (
     e: React.MouseEvent<HTMLAnchorElement>,
     target: string
@@ -39,137 +30,161 @@ export default function Navbar({ transparent = false }: NavbarProps) {
     }
   }
 
+  const socialLinks = [
+    {
+      href: 'https://www.instagram.com/natnails_profesional/',
+      icon: '/icons/instagram-brands-solid-full.svg',
+      alt: 'Instagram',
+    },
+    {
+      href: 'https://www.tiktok.com/@natalia_natnails',
+      icon: '/icons/tiktok-brands-solid-full.svg',
+      alt: 'TikTok',
+    },
+    {
+      href: 'https://wa.link/emgwzy',
+      icon: '/icons/whatsapp-brands-solid-full.svg',
+      alt: 'WhatsApp',
+    },
+    {
+      href: 'https://linktr.ee/natnails_profesional',
+      icon: '/icons/linktree-brands-solid-full.svg',
+      alt: 'Linktree',
+    },
+  ]
+
   return (
-    <nav className={navClasses}>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          <div className="flex-shrink-0">
-            <a href="/" className="flex items-center">
+    <>
+      {/* Logo - separate positioning */}
+      <div className="fixed top-4 left-4 z-50">
+        <a href="/" className="flex items-center">
+          <img
+            src="https://natnails.cloud/wp-content/uploads/2023/11/cropped-Natnails-logo-mini.png"
+            alt="NatNails Logo"
+            className="h-8 w-auto transition-transform hover:scale-105"
+          />
+        </a>
+      </div>
+
+      {/* Centered Floating Pill Menu - Desktop */}
+      <nav className="fixed top-4 left-1/2 z-50 hidden -translate-x-1/2 transform items-center space-x-4 rounded-full border border-white/40 bg-white/30 px-6 py-3 shadow-lg backdrop-blur-md md:flex">
+        <a
+          href="/"
+          className="text-sm font-semibold text-black transition-colors hover:text-pink-600"
+        >
+          Inicio
+        </a>
+        <a
+          href="https://natnails.cloud"
+          className="text-sm font-semibold text-black transition-colors hover:text-pink-600"
+        >
+          Cursos
+        </a>
+        <div className="flex items-center space-x-3 border-l border-white/40 pl-4">
+          {socialLinks.map(({ href, icon, alt }) => (
+            <a
+              key={alt}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="h-5 w-5 opacity-80 transition-opacity hover:opacity-100"
+            >
               <img
-                src="https://natnails.cloud/wp-content/uploads/2023/11/cropped-Natnails-logo-mini.png"
-                alt="NatNails Logo"
-                className="h-8 w-auto"
+                src={icon}
+                alt={alt}
+                className="h-full w-full object-contain"
+                loading="lazy"
               />
             </a>
-          </div>
-
-          {/* Desktop Menu */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
-              <a
-                href="#contenido"
-                onClick={(e) => handleSmoothScroll(e, '#contenido')}
-                className="rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:text-pink-600"
-              >
-                Contenido
-              </a>
-              <a
-                href="#bonos"
-                onClick={(e) => handleSmoothScroll(e, '#bonos')}
-                className="rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:text-pink-600"
-              >
-                Bonos
-              </a>
-              <a
-                href="#detalles"
-                onClick={(e) => handleSmoothScroll(e, '#detalles')}
-                className="rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:text-pink-600"
-              >
-                Detalles
-              </a>
-              <a
-                href="https://natnails.cloud"
-                className="rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:text-pink-600"
-              >
-                Más Cursos
-              </a>
-            </div>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:ring-2 focus:ring-pink-500 focus:outline-none"
-            >
-              <span className="sr-only">Abrir menú</span>
-              {isMenuOpen ? (
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              )}
-            </button>
-          </div>
+          ))}
         </div>
+      </nav>
+
+      {/* Mobile menu button */}
+      <div className="fixed top-4 right-4 z-50 md:hidden">
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="rounded-full border border-white/40 bg-white/30 p-2 text-gray-600 backdrop-blur-md transition-all hover:bg-white/50"
+        >
+          <span className="sr-only">Abrir menú</span>
+          {isMenuOpen ? (
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          ) : (
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          )}
+        </button>
       </div>
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden">
-          <div className="space-y-1 bg-white px-2 pt-2 pb-3 shadow-lg sm:px-3">
-            <a
-              href="#contenido"
-              onClick={(e) => {
-                handleSmoothScroll(e, '#contenido')
-                setIsMenuOpen(false)
-              }}
-              className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-pink-600"
-            >
-              Contenido
-            </a>
-            <a
-              href="#bonos"
-              onClick={(e) => {
-                handleSmoothScroll(e, '#bonos')
-                setIsMenuOpen(false)
-              }}
-              className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-pink-600"
-            >
-              Bonos
-            </a>
-            <a
-              href="#detalles"
-              onClick={(e) => {
-                handleSmoothScroll(e, '#detalles')
-                setIsMenuOpen(false)
-              }}
-              className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-pink-600"
-            >
-              Detalles
-            </a>
-            <a
-              href="https://natnails.cloud"
-              className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-pink-600"
-            >
-              Más Cursos
-            </a>
+        <div className="fixed top-16 right-4 left-4 z-40 md:hidden">
+          <div className="overflow-hidden rounded-2xl border border-white/20 bg-white/90 shadow-xl backdrop-blur-md">
+            <div className="space-y-3 px-6 py-4">
+              <a
+                href="/"
+                onClick={() => setIsMenuOpen(false)}
+                className="block py-2 text-base font-medium text-gray-700 transition-colors hover:text-pink-600"
+              >
+                Inicio
+              </a>
+              <a
+                href="https://natnails.cloud"
+                onClick={() => setIsMenuOpen(false)}
+                className="block py-2 text-base font-medium text-gray-700 transition-colors hover:text-pink-600"
+              >
+                Cursos
+              </a>
+
+              {/* Mobile Social Icons */}
+              <div className="border-t border-gray-200 pt-4">
+                <p className="mb-3 text-sm text-gray-500">Síguenos en:</p>
+                <div className="flex space-x-4">
+                  {socialLinks.map(({ href, icon, alt }) => (
+                    <a
+                      key={alt}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="h-6 w-6 opacity-80 transition-opacity hover:opacity-100"
+                    >
+                      <img
+                        src={icon}
+                        alt={alt}
+                        className="h-full w-full object-contain"
+                        loading="lazy"
+                      />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}
-    </nav>
+    </>
   )
 }

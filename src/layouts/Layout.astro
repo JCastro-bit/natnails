@@ -16,13 +16,13 @@ const {
   title,
   description = 'Descripción por defecto',
   image = '/images/og-image.jpg',
-  noIndex = false
+  noIndex = false,
 } = Astro.props
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -31,26 +31,26 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalURL} />
-    
+
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(image, Astro.url)} />
-    
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={Astro.url} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(image, Astro.url)} />
-    
+
     {noIndex && <meta name="robots" content="noindex, nofollow" />}
-    
+
     <title>{title}</title>
   </head>
-  <body class="min-h-screen bg-white text-gray-900 font-sans antialiased">
+  <body class="min-h-screen bg-white font-sans text-gray-900 antialiased">
     <slot />
   </body>
 </html>
