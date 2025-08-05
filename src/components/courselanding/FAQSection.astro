@@ -1,0 +1,99 @@
+---
+---
+
+<section class="bg-gray-50 py-16">
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+    <div class="mb-12 text-center">
+      <h2 class="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">
+        Preguntas Frecuentes
+      </h2>
+      <p class="text-lg text-gray-600">Resolvemos todas tus dudas</p>
+    </div>
+
+    <div class="space-y-4">
+      <div class="rounded-lg bg-white shadow-sm">
+        <button
+          class="faq-question w-full px-6 py-4 text-left text-lg font-semibold text-gray-900 hover:bg-gray-50 focus:outline-none"
+        >
+          ¿Realmente puedo aprender sin saber dibujar?
+        </button>
+        <div class="faq-answer hidden px-6 pb-4 text-gray-600">
+          ¡Absolutamente! El curso está diseñado específicamente para
+          principiantes. Te enseñamos cada trazo paso a paso, desde lo más
+          básico hasta técnicas avanzadas. Muchas de nuestras estudiantes
+          exitosas empezaron sin saber dibujar.
+        </div>
+      </div>
+
+      <div class="rounded-lg bg-white shadow-sm">
+        <button
+          class="faq-question w-full px-6 py-4 text-left text-lg font-semibold text-gray-900 hover:bg-gray-50 focus:outline-none"
+        >
+          ¿Cómo funciona el acceso al curso?
+        </button>
+        <div class="faq-answer hidden px-6 pb-4 text-gray-600">
+          Una vez realizado el pago, recibes acceso inmediato a nuestro grupo
+          privado de Telegram donde están todos los videos, materiales y la
+          comunidad de estudiantes. Es muy fácil de usar desde tu celular.
+        </div>
+      </div>
+
+      <div class="rounded-lg bg-white shadow-sm">
+        <button
+          class="faq-question w-full px-6 py-4 text-left text-lg font-semibold text-gray-900 hover:bg-gray-50 focus:outline-none"
+        >
+          ¿Qué pasa si no tengo tiempo para ver todo en 8 semanas?
+        </button>
+        <div class="faq-answer hidden px-6 pb-4 text-gray-600">
+          8 semanas es tiempo más que suficiente. El contenido está diseñado
+          para que puedas avanzar a tu propio ritmo, dedicando solo 30-45
+          minutos por día. Muchas estudiantes terminan antes de tiempo.
+        </div>
+      </div>
+
+      <div class="rounded-lg bg-white shadow-sm">
+        <button
+          class="faq-question w-full px-6 py-4 text-left text-lg font-semibold text-gray-900 hover:bg-gray-50 focus:outline-none"
+        >
+          ¿Qué materiales necesito comprar?
+        </button>
+        <div class="faq-answer hidden px-6 pb-4 text-gray-600">
+          Incluimos una lista completa de productos recomendados y proveedores
+          confiables. La inversión en materiales es mínima (aprox. $500-800
+          MXN) y te servirán para crear docenas de diseños.
+        </div>
+      </div>
+
+      <div class="rounded-lg bg-white shadow-sm">
+        <button
+          class="faq-question w-full px-6 py-4 text-left text-lg font-semibold text-gray-900 hover:bg-gray-50 focus:outline-none"
+        >
+          ¿Hay garantía?
+        </button>
+        <div class="faq-answer hidden px-6 pb-4 text-gray-600">
+          Sí, ofrecemos 100% garantía de satisfacción. Si en los primeros 7
+          días sientes que el curso no es para ti, te devolvemos tu dinero
+          completo, sin preguntas.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // FAQ Accordion functionality
+  document.querySelectorAll('.faq-question').forEach((question) => {
+    question.addEventListener('click', function (this: HTMLElement) {
+      const answer = this.nextElementSibling as HTMLElement
+      const isOpen = answer.style.display === 'block'
+
+      document.querySelectorAll('.faq-answer').forEach((a) => {
+        ;(a as HTMLElement).style.display = 'none'
+      })
+
+      if (!isOpen) {
+        answer.style.display = 'block'
+      }
+    })
+  })
+</script>
