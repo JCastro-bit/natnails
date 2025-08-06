@@ -1,60 +1,69 @@
 ---
+
 ---
 
 <section
   class="relative flex min-h-screen items-center justify-center overflow-hidden"
 >
-  <!-- Background Image -->
+  <!-- Capa 1 - Fondo con textura de papel -->
   <div class="absolute inset-0">
     <img
-      src="/images/bg-cover.webp"
-      alt="Background"
+      src="/images/paper-texture.webp"
+      alt="Paper texture background"
       class="h-full w-full object-cover"
     />
   </div>
-
-  <div class="absolute inset-0 overflow-hidden">
-    <div
-      class="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-pink-200/30 blur-xl"
-    >
-    </div>
-    <div
-      class="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-pink-200/30 blur-xl"
-    >
-    </div>
-  </div>
-
+  <!-- Capa 2 - Contenedor principal con borde y esquinas redondeadas -->
   <div
-    class="relative z-10 mx-auto max-w-7xl px-4 pt-20 text-center sm:px-6 lg:px-8"
+    class="absolute top-1/2 left-1/2 z-10 flex h-[calc(100vh-6rem)] w-[92%] -translate-x-1/2 -translate-y-1/2 items-center justify-center overflow-hidden rounded-3xl border border-black sm:h-[calc(100vh-8rem)] sm:w-[88%] md:h-[calc(100vh-10rem)] md:w-[84%] lg:h-[calc(100vh-12rem)] lg:w-[80%] xl:h-[calc(100vh-14rem)] xl:w-[76%] 2xl:h-[calc(100vh-16rem)] 2xl:w-[72%]"
   >
-    <div
-      class="mb-6 inline-flex animate-pulse items-center rounded-full bg-yellow-500 px-4 py-2 text-sm font-bold text-white"
-    >
-      ⚡ OFERTA ESPECIAL - Solo por tiempo limitado
+    <!-- Imagen de fondo del contenedor -->
+    <div class="absolute inset-0 rounded-3xl">
+      <img
+        src="/images/bg-cover.webp"
+        alt="Background"
+        class="h-full w-full rounded-3xl object-cover"
+      />
     </div>
-
-    <h1
-      class="mb-6 text-4xl leading-tight font-black text-gray-900 md:text-6xl lg:text-7xl"
+    <!-- Elementos decorativos internos -->
+    <div class="absolute inset-0 overflow-hidden rounded-3xl">
+      <div
+        class="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-pink-200/30 blur-xl"
+      >
+      </div>
+      <div
+        class="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-pink-200/30 blur-xl"
+      >
+      </div>
+    </div>
+    <!-- Contenido del hero -->
+    <div
+      class="relative z-20 mx-auto max-w-7xl px-4 pt-20 text-center sm:px-6 lg:px-8"
     >
-      DOMINA EL ARTE DE LA<br />
-      <span class="text-pink-600">CARICATURA</span><br />
-      <span class="text-2xl md:text-4xl lg:text-5xl">EN UÑAS</span>
-    </h1>
-
-    <p
-      class="mx-auto mb-8 max-w-3xl text-xl font-medium text-gray-800 md:text-2xl"
-    >
-      Aprende desde cero y transforma tu pasión en una <span
-        class="text-pink-600">profesión rentable</span
-      ><br />
-      Sin experiencia previa • Solo 8 semanas • Asesoría incluida
-    </p>
-
-    <a
-      href="#problema"
-      class="inline-block rounded-full bg-pink-600 px-8 py-4 font-bold text-white transition-all hover:scale-105 hover:bg-pink-700 hover:shadow-xl"
-    >
-      Descubre Cómo →
-    </a>
+      <div
+        class="mb-6 inline-flex animate-pulse items-center rounded-full bg-yellow-500 px-4 py-2 text-sm font-bold text-white"
+      >
+        ⚡ OFERTA ESPECIAL - Solo por tiempo limitado
+      </div>
+      <h1
+        class="mb-6 text-5xl leading-tight font-black text-pink-600 md:text-7xl lg:text-8xl"
+      >
+        Curso<br />
+        <span class="font-light italic">Online</span><br />
+        <span class="font-black">Caricatura</span>
+      </h1>
+      <p
+        class="mx-auto mb-8 max-w-3xl text-xl font-medium text-gray-800 md:text-2xl"
+      >
+        <span class="font-bold">Nivel Básico I</span><br />
+        Aprende desde cero • 8 semanas • Asesoría incluida
+      </p>
+      <a
+        href="#problema"
+        class="inline-block rounded-full bg-pink-600 px-8 py-4 font-bold text-white transition-all hover:scale-105 hover:bg-pink-700 hover:shadow-xl"
+      >
+        Descubre Cómo →
+      </a>
+    </div>
   </div>
 </section>
