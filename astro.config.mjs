@@ -9,6 +9,7 @@ import robotsTxt from 'astro-robots-txt'
 export default defineConfig({
   site: 'https://natnails.com.mx',
   vite: {
+    // @ts-ignore - Tailwind plugin type compatibility
     plugins: [tailwindcss()],
     resolve: {
       alias: {

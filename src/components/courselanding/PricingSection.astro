@@ -18,113 +18,250 @@ const { price, mercadoPagoLink, preferenceId, paypalLink } = Astro.props
   class="bg-gradient-to-br from-pink-600 to-purple-700 py-16"
 >
   <div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-    <h2 class="mb-4 text-3xl font-bold text-white md:text-4xl">
-      ¡Transforma Tu Pasión en Profesión HOY!
-    </h2>
-    <p class="mb-8 text-xl text-white/90">
-      Únete a cientos de estudiantes que ya están creando arte increíble y
-      generando ingresos
-    </p>
+    <!-- Urgencia y titular -->
+    <div class="mb-8">
+      <div
+        class="mb-4 inline-block rounded-full bg-yellow-400 px-6 py-3 text-lg font-bold text-black"
+      >
+        🔥 OFERTA TERMINA HOY A MEDIANOCHE
+      </div>
+      <h2 class="mb-4 text-3xl font-bold text-white md:text-4xl">
+        ¡Inscríbete Ahora y Ahorra $300!
+      </h2>
+      <p class="text-xl text-white/90">
+        Más de 500 alumnas ya transformaron su pasión en una fuente de ingresos
+      </p>
+    </div>
 
-    <!-- Pricing Box -->
-    <div class="mb-8 rounded-2xl bg-white/10 p-8 backdrop-blur-sm">
-      <div class="mb-6">
-        <p class="text-lg text-white/70">Precio normal del curso:</p>
-        <p class="text-xl text-white/70 line-through">
-          ${price.original} MXN
-        </p>
+    <!-- Pricing Box Principal -->
+    <div class="mb-8 rounded-3xl bg-white p-8 shadow-2xl">
+      <div class="mb-8 text-center">
+        <div class="mb-4">
+          <span class="text-lg text-gray-500 line-through"
+            >Precio regular: ${price.original} MXN</span
+          >
+        </div>
+
+        <div
+          class="mb-6 rounded-2xl bg-gradient-to-r from-green-400 to-green-600 p-6"
+        >
+          <p class="mb-2 text-2xl font-bold text-white">
+            🎉 PRECIO ESPECIAL HOY
+          </p>
+          <p class="text-6xl font-black text-white">${price.discount}</p>
+          <p class="text-xl font-bold text-white">
+            ¡Ahorras ${price.savings} MXN!
+          </p>
+        </div>
+
+        <!-- Lo que incluye -->
+        <div class="mb-8 rounded-xl bg-gray-50 p-6">
+          <h3 class="mb-4 text-xl font-bold text-gray-900">
+            Todo lo que recibes por ${price.discount}:
+          </h3>
+          <div class="grid grid-cols-1 gap-3 text-left md:grid-cols-2">
+            <div class="flex items-center">
+              <span class="mr-2 text-green-600">✓</span>
+              <span class="text-gray-700">8 semanas de curso completo</span>
+            </div>
+            <div class="flex items-center">
+              <span class="mr-2 text-green-600">✓</span>
+              <span class="text-gray-700">Asesoría personalizada 1 a 1</span>
+            </div>
+            <div class="flex items-center">
+              <span class="mr-2 text-green-600">✓</span>
+              <span class="text-gray-700">5 caricaturas paso a paso</span>
+            </div>
+            <div class="flex items-center">
+              <span class="mr-2 text-green-600">✓</span>
+              <span class="text-gray-700">Técnicas de relieves 3D</span>
+            </div>
+            <div class="flex items-center">
+              <span class="mr-2 text-green-600">✓</span>
+              <span class="text-gray-700">Comunidad privada en Telegram</span>
+            </div>
+            <div class="flex items-center">
+              <span class="mr-2 text-green-600">✓</span>
+              <span class="text-gray-700">Garantía de 7 días</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Valor real -->
+        <div class="mb-6 rounded-xl bg-blue-50 p-4">
+          <p class="font-bold text-blue-800">
+            💎 Valor real del curso: $3,500+ MXN<br />
+            <span class="text-sm font-normal"
+              >Comparado con cursos presenciales similares</span
+            >
+          </p>
+        </div>
       </div>
 
-      <div class="mb-8 rounded-xl bg-yellow-400 p-4">
-        <p class="text-lg font-bold text-yellow-900">
-          🔥 PRECIO ESPECIAL HOY:
-        </p>
-        <p class="text-5xl font-black text-yellow-900">
-          ${price.discount} MXN
-        </p>
-        <p class="font-bold text-yellow-900">Ahorras $300 MXN</p>
-      </div>
-
-      <!-- Payment Options -->
-      <div class="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+      <!-- Opciones de Pago Mejoradas -->
+      <div class="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2">
         <!-- Mercado Pago - México -->
-        <div class="rounded-lg bg-white/20 p-6 backdrop-blur-sm">
-          <div class="mb-4">
-            <h3 class="mb-2 text-xl font-bold text-white">🇲🇽 Para México</h3>
-            <p class="text-sm text-white/80">Mercado Pago • MSI • OXXO</p>
-          </div>
-          <script
-            src={mercadoPagoLink}
-            data-preference-id={preferenceId}
-            data-source="button"></script>
-          <div class="mt-3 space-y-1 text-xs text-white/70">
-            <p>💳 12 meses sin intereses</p>
-            <p>🏪 Pago en tiendas OXXO</p>
-            <p>🏦 Transferencia bancaria</p>
-          </div>
+        <div
+          class="rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 p-6 text-white"
+        >
+          <h4 class="mb-3 text-lg font-bold">🇲🇽 Pago con Mercado Pago</h4>
+          <p class="mb-4 text-sm text-blue-100">
+            Tarjeta de crédito, débito, OXXO, transferencia
+          </p>
+          <button
+            id="mp-button"
+            class="w-full rounded-lg bg-white py-3 font-bold text-blue-600 transition-colors hover:bg-gray-100"
+          >
+            Pagar ${price.discount} MXN
+          </button>
+          <p class="mt-2 text-xs text-blue-200">
+            Hasta 12 meses sin intereses con algunas tarjetas
+          </p>
         </div>
 
-        <!-- PayPal - Internacional -->
-        <div class="rounded-lg bg-white/20 p-6 backdrop-blur-sm">
-          <div class="mb-4">
-            <h3 class="mb-2 text-xl font-bold text-white">
-              🌍 Internacional
-            </h3>
-            <p class="text-sm text-white/80">PayPal • $65 USD</p>
-          </div>
-          <div id="paypal-button-container" class="mb-3"></div>
-          <div class="mt-3 space-y-1 text-xs text-white/70">
-            <p>💳 Tarjetas internacionales</p>
-            <p>🌍 Disponible globalmente</p>
-            <p>💱 Pago en USD</p>
-          </div>
+        <!-- PayPal Internacional -->
+        <div
+          class="rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 p-6 text-white"
+        >
+          <h4 class="mb-3 text-lg font-bold">🌍 Pago Internacional</h4>
+          <p class="mb-4 text-sm text-purple-100">
+            PayPal, tarjetas internacionales
+          </p>
+          <a
+            href={paypalLink}
+            class="block w-full rounded-lg bg-white py-3 text-center font-bold text-purple-600 transition-colors hover:bg-gray-100"
+          >
+            Pagar con PayPal
+          </a>
+          <p class="mt-2 text-xs text-purple-200">
+            Conversión automática a tu moneda local
+          </p>
         </div>
       </div>
 
-      <div class="text-center">
-        <p class="text-sm font-medium text-white/80">
-          🔒 Transacciones 100% seguras y encriptadas
+      <!-- Información adicional -->
+      <div class="border-t pt-6">
+        <div
+          class="mb-4 flex items-center justify-center space-x-4 text-sm text-gray-600"
+        >
+          <div class="flex items-center">
+            <svg
+              class="mr-1 h-4 w-4 text-green-600"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"></path>
+            </svg>
+            Pago 100% seguro
+          </div>
+          <div class="flex items-center">
+            <svg
+              class="mr-1 h-4 w-4 text-green-600"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"></path>
+            </svg>
+            Acceso inmediato
+          </div>
+          <div class="flex items-center">
+            <svg
+              class="mr-1 h-4 w-4 text-green-600"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"></path>
+            </svg>
+            Garantía de 7 días
+          </div>
+        </div>
+
+        <p class="text-sm text-gray-500">
+          💡 <strong>Tip:</strong> Después del pago recibirás un email con el enlace
+          al grupo de Telegram donde comenzará tu transformación.
         </p>
       </div>
     </div>
 
-    <!-- Investment Summary -->
-    <div class="rounded-xl bg-white/20 p-6 backdrop-blur-sm">
-      <h3 class="mb-4 text-xl font-bold text-white">
-        Resumen de tu inversión:
-      </h3>
-      <div
-        class="grid grid-cols-1 gap-3 text-sm text-white/90 md:grid-cols-2"
-      >
-        <div class="text-left">
-          <p>✅ Curso completo de caricatura (8 semanas)</p>
-          <p>✅ 5 caricaturas paso a paso</p>
-          <p>✅ 3 bonos premium (valor $1,050)</p>
-        </div>
-        <div class="text-left">
-          <p>✅ Asesoría personalizada</p>
-          <p>✅ Comunidad exclusiva</p>
-          <p>✅ Garantía de satisfacción</p>
-        </div>
-      </div>
+    <!-- Urgencia final -->
+    <div class="rounded-xl bg-red-600 p-6 text-white">
+      <h3 class="mb-2 text-xl font-bold">⏰ Esta oferta expira en:</h3>
+      <div id="countdown" class="mb-3 text-3xl font-bold">23:59:42</div>
+      <p class="text-red-100">
+        No pierdas la oportunidad de ahorrar ${price.savings} MXN y cambiar tu vida
+        para siempre
+      </p>
     </div>
   </div>
 </section>
+
+<!-- Script para Mercado Pago -->
+<script is:inline src={mercadoPagoLink}></script>
+<script is:inline define:vars={{ preferenceId }}>
+  document.addEventListener('DOMContentLoaded', function () {
+    const mp = new MercadoPago('APP_USR-12345-test', {
+      locale: 'es-MX',
+    })
+
+    document.getElementById('mp-button').addEventListener('click', function () {
+      mp.checkout({
+        preference: {
+          id: preferenceId,
+        },
+        render: {
+          container: '.cho-container',
+          label: 'Pagar con Mercado Pago',
+        },
+      })
+    })
+
+    // Countdown timer
+    function updateCountdown() {
+      const now = new Date().getTime()
+      const tomorrow = new Date()
+      tomorrow.setDate(tomorrow.getDate() + 1)
+      tomorrow.setHours(0, 0, 0, 0)
+      const distance = tomorrow - now
+
+      const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      )
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000)
+
+      document.getElementById('countdown').innerHTML =
+        hours.toString().padStart(2, '0') +
+        ':' +
+        minutes.toString().padStart(2, '0') +
+        ':' +
+        seconds.toString().padStart(2, '0')
+    }
+
+    updateCountdown()
+    setInterval(updateCountdown, 1000)
+  })
+</script>
 
 <!-- PayPal SDK -->
 <script
   src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD"
 ></script>
 
-<script>
-  // Declare PayPal types
-  declare const paypal: any
-
+<script is:inline>
   // PayPal Button Initialization
-  if (typeof paypal !== 'undefined') {
+  if (typeof window !== 'undefined' && typeof paypal !== 'undefined') {
     paypal
       .Buttons({
-        createOrder: function (data: any, actions: any) {
+        createOrder: function (_data, actions) {
           return actions.order.create({
             purchase_units: [
               {
@@ -137,13 +274,13 @@ const { price, mercadoPagoLink, preferenceId, paypalLink } = Astro.props
             ],
           })
         },
-        onApprove: function (data: any, actions: any) {
-          return actions.order.capture().then(function (details: any) {
+        onApprove: function (_data, actions) {
+          return actions.order.capture().then(function (_details) {
             alert('¡Pago completado! Revisa tu email para acceder al curso.')
             window.location.href = '/success'
           })
         },
-        onError: function (err: any) {
+        onError: function (err) {
           console.error('PayPal Error:', err)
           alert('Hubo un error con el pago. Por favor intenta de nuevo.')
         },
@@ -152,10 +289,10 @@ const { price, mercadoPagoLink, preferenceId, paypalLink } = Astro.props
   }
 
   // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', function (this: HTMLAnchorElement, e) {
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener('click', function (e) {
       e.preventDefault()
-      const href = this.getAttribute('href')
+      const href = anchor.getAttribute('href')
       const target = href ? document.querySelector(href) : null
       if (target) {
         target.scrollIntoView({

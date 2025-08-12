@@ -6,9 +6,12 @@ import CourseHero from '@/components/courselanding/CourseHero.astro'
 import ProblemSection from '@/components/courselanding/ProblemSection.astro'
 import SolutionSection from '@/components/courselanding/SolutionSection.astro'
 import BenefitsSection from '@/components/courselanding/BenefitsSection.astro'
+import TestimonialsSection from '@/components/courselanding/TestimonialsSection.astro'
 import BonusSection from '@/components/courselanding/BonusSection.astro'
+import GuaranteeSection from '@/components/courselanding/GuaranteeSection.astro'
 import FAQSection from '@/components/courselanding/FAQSection.astro'
 import PricingSection from '@/components/courselanding/PricingSection.astro'
+import FinalCTASection from '@/components/courselanding/FinalCTASection.astro'
 
 const price = {
   original: 1499,
@@ -23,8 +26,8 @@ const paypalLink = 'https://www.paypal.com/ncp/payment/YOUR_PAYPAL_BUTTON_ID'
 ---
 
 <Layout
-  title="Curso Online de Caricatura - Nivel Básico I | NatNails"
-  description="Aprende caricatura en uñas desde cero. Curso online con asesoría personalizada. 8 semanas, plataforma Telegram. Sin experiencia previa necesaria."
+  title="Curso Online de Caricatura - Aprende y Gana Dinero Desde Casa | NatNails"
+  description="Transforma tu pasión en una fuente de ingresos. Curso online de caricaturas en uñas con asesoría personalizada. Sin experiencia previa. ¡Inscríbete hoy y ahorra $300!"
   image="https://natnails.cloud/wp-content/uploads/2023/11/natnails-home-2048x1365.webp"
 >
   <Navbar transparent={true} client:load />
@@ -33,14 +36,17 @@ const paypalLink = 'https://www.paypal.com/ncp/payment/YOUR_PAYPAL_BUTTON_ID'
   <ProblemSection />
   <SolutionSection />
   <BenefitsSection />
+  <TestimonialsSection />
   <BonusSection />
+  <GuaranteeSection />
   <FAQSection />
-  <PricingSection 
+  <PricingSection
     price={price}
     mercadoPagoLink={mercadoPagoLink}
     preferenceId={preferenceId}
     paypalLink={paypalLink}
   />
+  <FinalCTASection />
 
   <Footer />
 </Layout>
