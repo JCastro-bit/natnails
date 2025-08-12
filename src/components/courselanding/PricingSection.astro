@@ -8,9 +8,19 @@ interface Props {
   mercadoPagoLink: string
   preferenceId: string
   paypalLink: string
+  paypalClientId?: string
+  paypalAmountUSD?: string
+  paypalCurrency?: string
 }
 
-const { price, mercadoPagoLink, preferenceId, paypalLink } = Astro.props
+const {
+  price,
+  mercadoPagoLink,
+  preferenceId,
+  paypalClientId,
+  paypalAmountUSD = '65.00',
+  paypalCurrency = 'USD',
+} = Astro.props
 ---
 
 <section
@@ -108,12 +118,14 @@ const { price, mercadoPagoLink, preferenceId, paypalLink } = Astro.props
           <p class="mb-4 text-sm text-blue-100">
             Tarjeta de crédito, débito, OXXO, transferencia
           </p>
-          <button
-            id="mp-button"
-            class="w-full rounded-lg bg-white py-3 font-bold text-blue-600 transition-colors hover:bg-gray-100"
-          >
-            Pagar ${price.discount} MXN
-          </button>
+          <!-- Botón oficial de Mercado Pago (embed) -->
+          <div class="cho-container">
+            <script
+              is:inline
+              src={mercadoPagoLink}
+              data-preference-id={preferenceId}
+              data-source="button"></script>
+          </div>
           <p class="mt-2 text-xs text-blue-200">
             Hasta 12 meses sin intereses con algunas tarjetas
           </p>
@@ -127,15 +139,28 @@ const { price, mercadoPagoLink, preferenceId, paypalLink } = Astro.props
           <p class="mb-4 text-sm text-purple-100">
             PayPal, tarjetas internacionales
           </p>
-          <a
-            href={paypalLink}
-            class="block w-full rounded-lg bg-white py-3 text-center font-bold text-purple-600 transition-colors hover:bg-gray-100"
-          >
-            Pagar con PayPal
-          </a>
-          <p class="mt-2 text-xs text-purple-200">
-            Conversión automática a tu moneda local
-          </p>
+          {
+            paypalClientId ? (
+              <>
+                <div id="paypal-button-container" />
+                <p class="mt-2 text-xs text-purple-200">
+                  Conversión automática a tu moneda local
+                </p>
+              </>
+            ) : (
+              <>
+                <button
+                  disabled
+                  class="block w-full cursor-not-allowed rounded-lg bg-white/40 py-3 text-center font-bold text-white opacity-70"
+                >
+                  Próximamente
+                </button>
+                <p class="mt-2 text-xs text-purple-200">
+                  Este método estará disponible pronto
+                </p>
+              </>
+            )
+          }
         </div>
       </div>
 
@@ -204,89 +229,34 @@ const { price, mercadoPagoLink, preferenceId, paypalLink } = Astro.props
   </div>
 </section>
 
-<!-- Script para Mercado Pago -->
-<script is:inline src={mercadoPagoLink}></script>
-<script is:inline define:vars={{ preferenceId }}>
-  document.addEventListener('DOMContentLoaded', function () {
-    const mp = new MercadoPago('APP_USR-12345-test', {
-      locale: 'es-MX',
-    })
+<!-- Countdown y helpers -->
+<script is:inline>
+  // Countdown timer
+  function updateCountdown() {
+    const now = new Date().getTime()
+    const tomorrow = new Date()
+    tomorrow.setDate(tomorrow.getDate() + 1)
+    tomorrow.setHours(0, 0, 0, 0)
+    const distance = tomorrow - now
 
-    document.getElementById('mp-button').addEventListener('click', function () {
-      mp.checkout({
-        preference: {
-          id: preferenceId,
-        },
-        render: {
-          container: '.cho-container',
-          label: 'Pagar con Mercado Pago',
-        },
-      })
-    })
+    const hours = Math.floor(
+      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    )
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000)
 
-    // Countdown timer
-    function updateCountdown() {
-      const now = new Date().getTime()
-      const tomorrow = new Date()
-      tomorrow.setDate(tomorrow.getDate() + 1)
-      tomorrow.setHours(0, 0, 0, 0)
-      const distance = tomorrow - now
-
-      const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      )
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000)
-
-      document.getElementById('countdown').innerHTML =
+    var el = document.getElementById('countdown')
+    if (el) {
+      el.innerHTML =
         hours.toString().padStart(2, '0') +
         ':' +
         minutes.toString().padStart(2, '0') +
         ':' +
         seconds.toString().padStart(2, '0')
     }
-
-    updateCountdown()
-    setInterval(updateCountdown, 1000)
-  })
-</script>
-
-<!-- PayPal SDK -->
-<script
-  src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD"
-></script>
-
-<script is:inline>
-  // PayPal Button Initialization
-  if (typeof window !== 'undefined' && typeof paypal !== 'undefined') {
-    paypal
-      .Buttons({
-        createOrder: function (_data, actions) {
-          return actions.order.create({
-            purchase_units: [
-              {
-                amount: {
-                  value: '65.00',
-                  currency_code: 'USD',
-                },
-                description: 'Curso Online de Caricatura - Nivel Básico I',
-              },
-            ],
-          })
-        },
-        onApprove: function (_data, actions) {
-          return actions.order.capture().then(function (_details) {
-            alert('¡Pago completado! Revisa tu email para acceder al curso.')
-            window.location.href = '/success'
-          })
-        },
-        onError: function (err) {
-          console.error('PayPal Error:', err)
-          alert('Hubo un error con el pago. Por favor intenta de nuevo.')
-        },
-      })
-      .render('#paypal-button-container')
   }
+  updateCountdown()
+  setInterval(updateCountdown, 1000)
 
   // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
@@ -295,11 +265,52 @@ const { price, mercadoPagoLink, preferenceId, paypalLink } = Astro.props
       const href = anchor.getAttribute('href')
       const target = href ? document.querySelector(href) : null
       if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        })
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' })
       }
     })
   })
 </script>
+
+{
+  paypalClientId && (
+    <script
+      src={`https://www.paypal.com/sdk/js?client-id=${paypalClientId}&currency=${paypalCurrency}`}
+    />
+  )
+}
+
+{
+  paypalClientId && (
+    <script is:inline define:vars={{ paypalAmountUSD }}>
+      // PayPal Button Initialization
+      if (typeof window !== 'undefined' && typeof paypal !== 'undefined') {
+      paypal
+        .Buttons({
+        createOrder: function (_data, actions) {
+          return actions.order.create({
+          purchase_units: [
+            {
+            amount: {
+              value: paypalAmountUSD,
+            },
+            description: 'Curso Online de Caricatura - Nivel Básico I',
+            },
+          ],
+          });
+        },
+        onApprove: function (_data, actions) {
+          return actions.order.capture().then(function (_details) {
+          alert('¡Pago completado! Revisa tu email para acceder al curso.');
+          window.location.href = '/success';
+          });
+        },
+        onError: function (err) {
+          console.error('PayPal Error:', err);
+          alert('Hubo un error con el pago. Por favor intenta de nuevo.');
+        },
+        })
+        .render('#paypal-button-container');
+      }
+    </script>
+  )
+}
