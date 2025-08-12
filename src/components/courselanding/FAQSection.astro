@@ -1,4 +1,5 @@
 ---
+
 ---
 
 <section class="bg-gray-50 py-16">
@@ -32,9 +33,9 @@
           ¿Cómo funciona el acceso al curso?
         </button>
         <div class="faq-answer hidden px-6 pb-4 text-gray-600">
-          Una vez realizado el pago, recibes acceso inmediato a nuestro grupo
-          privado de Telegram donde están todos los videos, materiales y la
-          comunidad de estudiantes. Es muy fácil de usar desde tu celular.
+          Tras confirmar tu pago, obtienes acceso a nuestro grupo privado en
+          <strong>Telegram</strong> donde tendrás los videos, materiales y el acompañamiento.
+          Puedes usarlo cómodamente desde tu celular.
         </div>
       </div>
 
@@ -45,9 +46,10 @@
           ¿Qué pasa si no tengo tiempo para ver todo en 8 semanas?
         </button>
         <div class="faq-answer hidden px-6 pb-4 text-gray-600">
-          8 semanas es tiempo más que suficiente. El contenido está diseñado
-          para que puedas avanzar a tu propio ritmo, dedicando solo 30-45
-          minutos por día. Muchas estudiantes terminan antes de tiempo.
+          El contenido está diseñado para avanzar a tu <strong
+            >propio ritmo</strong
+          >. Puedes organizarte con sesiones cortas y constantes durante las 8
+          semanas de acceso para ver progreso real sin presiones.
         </div>
       </div>
 
@@ -58,9 +60,9 @@
           ¿Qué materiales necesito comprar?
         </button>
         <div class="faq-answer hidden px-6 pb-4 text-gray-600">
-          Incluimos una lista completa de productos recomendados y proveedores
-          confiables. La inversión en materiales es mínima (aprox. $500-800
-          MXN) y te servirán para crear docenas de diseños.
+          Incluimos una <strong>lista de productos recomendados</strong> y proveedores
+          confiables, con alternativas para distintos presupuestos. Empezarás con
+          lo esencial y podrás ampliar tu kit conforme avances.
         </div>
       </div>
 
@@ -71,9 +73,25 @@
           ¿Hay garantía?
         </button>
         <div class="faq-answer hidden px-6 pb-4 text-gray-600">
-          Sí, ofrecemos 100% garantía de satisfacción. Si en los primeros 7
-          días sientes que el curso no es para ti, te devolvemos tu dinero
-          completo, sin preguntas.
+          Ofrecemos <strong>calidad asegurada</strong>: clases claras en video
+          HD, acompañamiento y metodología paso a paso. No realizamos
+          devoluciones, pero nos aseguramos de que recibas <strong
+            >soporte real</strong
+          > durante tu proceso.
+        </div>
+      </div>
+
+      <div class="rounded-lg bg-white shadow-sm">
+        <button
+          class="faq-question w-full px-6 py-4 text-left text-lg font-semibold text-gray-900 hover:bg-gray-50 focus:outline-none"
+        >
+          ¿Qué métodos de pago aceptan?
+        </button>
+        <div class="faq-answer hidden px-6 pb-4 text-gray-600">
+          Puedes pagar con <strong>tarjeta</strong>, tiendas afiliadas y
+          transferencia mediante <strong>Mercado Pago (México)</strong>, o con <strong
+            >PayPal</strong
+          > para pagos internacionales.
         </div>
       </div>
     </div>
@@ -82,18 +100,18 @@
 
 <script>
   // FAQ Accordion functionality
-  document.querySelectorAll('.faq-question').forEach((question) => {
-    question.addEventListener('click', function (this: HTMLElement) {
-      const answer = this.nextElementSibling as HTMLElement
-      const isOpen = answer.style.display === 'block'
+  document.querySelectorAll('.faq-question').forEach(function (question) {
+    question.addEventListener('click', function () {
+      var answer = question.nextElementSibling
+      if (!answer) return
 
-      document.querySelectorAll('.faq-answer').forEach((a) => {
-        ;(a as HTMLElement).style.display = 'none'
+      // Cerrar todas las respuestas
+      document.querySelectorAll('.faq-answer').forEach(function (a) {
+        a.classList.add('hidden')
       })
 
-      if (!isOpen) {
-        answer.style.display = 'block'
-      }
+      // Abrir la seleccionada
+      answer.classList.toggle('hidden')
     })
   })
 </script>
