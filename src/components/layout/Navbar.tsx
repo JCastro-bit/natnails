@@ -45,13 +45,7 @@ export default function Navbar({ transparent = false }: NavbarProps) {
       {/* Enhanced Logo with better contrast */}
       <div className="fixed top-6 left-6 z-50">
         <a href="/" className="group flex items-center">
-          <div
-            className={`rounded-lg border p-2 shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-xl ${
-              transparent && !isScrolled
-                ? 'border-white/20 bg-white/75'
-                : 'border-white/20 bg-white/95'
-            }`}
-          >
+          <div className="rounded-lg border border-white/20 bg-white/95 p-2 shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-xl">
             <img
               src="https://natnails.cloud/wp-content/uploads/2023/11/cropped-Natnails-logo-mini.png"
               alt="NatNails Logo"
@@ -63,13 +57,7 @@ export default function Navbar({ transparent = false }: NavbarProps) {
 
       {/* Enhanced Centered Floating Menu - Desktop */}
       <nav className="fixed top-6 left-1/2 z-50 hidden -translate-x-1/2 transform md:flex">
-        <div
-          className={`flex items-center space-x-1 rounded-2xl border px-2 py-2 shadow-2xl backdrop-blur-md transition-all duration-300 ${
-            transparent && !isScrolled
-              ? 'border-white/20 bg-white/80'
-              : 'border-white/30 bg-white/95'
-          }`}
-        >
+        <div className="flex items-center space-x-1 rounded-2xl border border-white/30 bg-white/95 px-2 py-2 shadow-2xl backdrop-blur-md">
           {/* Navigation Links */}
           <a
             href="/"
@@ -78,7 +66,7 @@ export default function Navbar({ transparent = false }: NavbarProps) {
             Inicio
           </a>
           <a
-            href="https://natnails.com.mx"
+            href="/#cursos"
             className="rounded-xl px-4 py-2.5 text-sm font-semibold text-gray-800 transition-all duration-200 hover:scale-105 hover:bg-pink-50 hover:text-pink-600"
           >
             Cursos
